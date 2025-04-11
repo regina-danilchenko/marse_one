@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <a href="jobs" class="btn btn-secondary">Добавить работу</a>
+{% endif %}
+{% for item in jobs%}
+<div class="col-md6 border rounded">
+    <div>
+        {% for it in users %}
+        {% if it.id == item.team_leader%}
+        <p>Руководитель - {{it.surname}} {{it.name}}</p>
+        {% endif %}
+        {% endfor %}
+        <p>Работа - {{item.job}}</p>
+        <p>Время работы в часах - {{item.work_size}}</p>
+        <p>Участники(id) - {{item.collaborators}}</p>
+        <p>Дата начала - {{item.start_date}}</p>
+        <p>Дата завершения - {{item.end_date}}</p>
+        <p>Завершена - {% if item.is_finished == 1%} да {% else %} нет {% endif %}</p>
+        {% if current_user.is_authenticated and (current_user == item.user or current_user.id == 1) %}
+        <div>
+            <a href="/jobs/{{ item.id }}" class="btn btn-warning">
+                Изменить
+            </a>
+            <a href="/jobs_delete/{{ item.id }}" class="btn btn-danger">
+                Удалить
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
