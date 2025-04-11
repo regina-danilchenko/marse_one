@@ -12,7 +12,7 @@ blueprint = flask.Blueprint(
 
 
 @blueprint.route('/api/jobs')
-def get_news():
+def get_jobs():
     db_sess = db_session.create_session()
     jobs = db_sess.query(Jobs).all()
     return jsonify(
@@ -24,7 +24,7 @@ def get_news():
     )
 
 @blueprint.route('/api/jobs/<job_id>', methods=['GET'])
-def get_one_news(job_id):
+def get_one_jobs(job_id):
     db_sess = db_session.create_session()
     try:
         if int(job_id):

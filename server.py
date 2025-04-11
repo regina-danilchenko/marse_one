@@ -4,7 +4,7 @@ from data.users import User
 from data import users_resources, jobs_resource
 from forms.user import RegisterForm, LoginForm
 from forms.jobs import JobsForm
-from data import db_session, jobs_api
+from data import db_session, jobs_api, users_api
 from flask_restful import abort, Api
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
@@ -154,6 +154,7 @@ def bad_request(_):
 def main():
     db_session.global_init("db/mars.db")
     app.register_blueprint(jobs_api.blueprint)
+    app.register_blueprint(users_api.blueprint)
     api.add_resource(users_resources.UsersListResource, '/api/v2/users')
     api.add_resource(users_resources.UsersResource, '/api/v2/users/<int:user_id>')
     api.add_resource(jobs_resource.JobsListResource, '/api/v2/jobs')

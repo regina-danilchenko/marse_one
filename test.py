@@ -2,48 +2,45 @@ from requests import get, post, delete, put
 import datetime
 
 # получение всех колонистов
-# print(get('http://localhost:5000/api/v2/users').json())
+print(get('http://localhost:5000/api/users').json())
 
 # получение 1 колониста по id
-# print(get('http://localhost:5000/api/v2/users/3').json())
+print(get('http://localhost:5000/api/users/1').json())
 
 # получение 1 колониста по id котрого нет
-# print(get('http://localhost:5000/api/v2/users/55').json())
+print(get('http://localhost:5000/api/users/55').json())
 
 # добавлнеие колониста
-# print(post('http://localhost:5000/api/v2/users',
-#            json={
-#                'surname': 'колонист',
-#                'name': 'колонист',
-#                'age': 27,
-#                'position': 'повар',
-#                'speciality': 'кулинария',
-#                'address': 'марс',
-#                'email': 'м@bk.com',
-#                'modified_date': datetime.date(2025, 3, 25).isoformat()
-#            }).json())
+print(post('http://localhost:5000/api/users',
+           json={
+               'surname': 'колонист',
+               'name': 'колонист',
+               'age': 27,
+               'position': 'повар',
+               'speciality': 'кулинария',
+               'address': 'марс',
+               'email': 'м@bk.com',
+               'modified_date': datetime.date(2025, 3, 25).isoformat()
+           }).json())
 
 # добавлнеие колониста где указаны не все поля
-# print(post('http://localhost:5000/api/v2/users',
-#            json={
-#                'surname': 'колонист',
-#                'name': 'колонист',
-#                'age': 27,
-#                'position': 'повар',
-#                'speciality': 'кулинария',
-#            }).json())
+print(post('http://localhost:5000/api/users',
+           json={
+               'surname': 'колонист',
+               'name': 'колонист',
+               'age': 27,
+               'position': 'повар',
+               'speciality': 'кулинария',
+           }).json())
 
 # добавление колониста с пустым json
-# print(post('http://localhost:5000/api/v2/users', json={}).json())
+print(post('http://localhost:5000/api/users', json={}).json())
 
 # удаление колониста по id
-# print(delete('http://localhost:5000/api/v2/users/1').json())
-
-# удаление колониста где не указан id
-# print(delete('http://localhost:5000/api/v2/users').json())
+print(delete('http://localhost:5000/api/users/2').json())
 
 # удаление колониста по id которого нет
-# print(delete('http://localhost:5000/api/v2/users/45').json())
+print(delete('http://localhost:5000/api/users/45').json())
 
 # все работы
 # print(get('http://localhost:5000/api/v2/jobs').json())
